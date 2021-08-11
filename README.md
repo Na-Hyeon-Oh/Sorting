@@ -48,6 +48,8 @@ Implementation of an efficient sorting algorithm to cover diverse input items.
 |input|input files / test cases|
 |output|output file|
 
+<br>
+
 ### Compile and Execute
 
 Your main file should be in the folder where input files are in.
@@ -72,7 +74,7 @@ Therefore, I do not sort real objects, but sort the “order number” by compar
 
 ![image](https://user-images.githubusercontent.com/64342804/129051870-444296a5-b649-45bc-9042-5d3d85134104.png)
 
-
+<br>
 
 ### Performance Analysis
 
@@ -179,11 +181,11 @@ Also, if two objects with equal keys appear in the same order in sorted output a
 
 The details are as follows:
 
-– The first part of the input file represents the number of objects to be sorted.
+  - The first part of the input file represents the number of objects to be sorted.
 
-– The second part of the input file represents the attributes for objects; each attribute is separated from the next attribute by a character :.
+  - The second part of the input file represents the attributes for objects; each attribute is separated from the next attribute by a character :.
 
-– The third part of the input file represents the objects to be sorted; each object is separated from the next object by a character :.
+  - The third part of the input file represents the objects to be sorted; each object is separated from the next object by a character :.
 
 <br>
   
