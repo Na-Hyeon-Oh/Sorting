@@ -44,10 +44,9 @@ Implementation of an efficient sorting algorithm to cover diverse input items.
 
 |File Name|Descripton|
 |------|---|
-|detectDeadlock.c|main file|
-|Makefile|bash script|
-|DeadlockDetection|execution file|
-|input files|test cases in following [format](#inputF)|
+|sort.c|main file|
+|input|input files / test cases|
+|output|output file|
 
 ### Compile and Execute
 
@@ -186,7 +185,7 @@ The details are as follows:
 
 – The third part of the input file represents the objects to be sorted; each object is separated from the next object by a character :.
 
-
+<br>
   
 ### Output Format
  
