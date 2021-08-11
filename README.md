@@ -51,10 +51,7 @@ Implementation of an efficient sorting algorithm to cover diverse input items.
 
 ### Compile and Execute
 
-```
-make
-./DeadlockDetection input_file_name
-```
+Your main file should be in the folder where input files are in.
 
 <br>
 
@@ -80,7 +77,7 @@ Therefore, I do not sort real objects, but sort the “order number” by compar
 
 ### Performance Analysis
 
-1.	Input file read once(one cycle), linearly
+Input file read once(one cycle), linearly
 
 -	If (the number of line) = n, (the number of attributes) = t, (the length of each attributes) = m, then print 1 byte for n*t*(m+1) + c times. c is a constant which is from reading 1st, 2nd part
 
@@ -88,45 +85,45 @@ Therefore, I do not sort real objects, but sort the “order number” by compar
 
 <br>
 
-2.	Sorting
+Sorting
 
-1)	OrderMergeSort()
+1. OrderMergeSort()
 
 -	My sorting algorithm is based on the merge sort, so that it has O(n log n) time complexity and it gives us stable result
 
 -	Here, n = obj_num = (the number of objects)
 	
-1)	OrderMergeSort(key_objects[n], sorted_order[n], low, high, type)
+-	OrderMergeSort(key_objects[n], sorted_order[n], low, high, type)
 	
-  a.	If n=1, done  -> O(1)
+    - (i)	If n=1, done  -> O(1)
   
-  b.	Recursively Sort A[1, … n/2(floor)] and A[n/2(ceil), …, n]  -> 2T(n/2)
+    - (ii)	Recursively Sort A[1, … n/2(floor)] and A[n/2(ceil), …, n]  -> 2T(n/2)
   
-  c.	Merge 2 sorted lists  -> O(n)
+    - (iii)	Merge 2 sorted lists  -> O(n)
   
-  ▶️ T(n) =
+  - ▶️ T(n) =
   
-    (i)	O(1) if n=1
+    - (i)	O(1) if n=1
     
-    (ii)	T(n/2(floor)) + T(n/2(ceil)) + O(n) = 2T(n/2) + O(n) if n>1
+    - (ii)	T(n/2(floor)) + T(n/2(ceil)) + O(n) = 2T(n/2) + O(n) if n>1
  
-      ➡️ h = lgn, (the number of leaves) = n by recursion tree
+      - ➡️ h = lgn, (the number of leaves) = n by recursion tree
       
-      ➡️ Θ(n lg n)
+      - ➡️ Θ(n lg n)
       
-2)	NewMerge()
+2. NewMerge()
 
 -	For comparing strings in the key_objects[], I use previously defined function ‘strcmp’ (for case sensitivity) in <string.h>. These functions may impact on code performance with their internal complexity
 
 <br>
 
-3.	Print output with no search(just load from the memory) using predefined 2D array objects; print by byte for 1 cycle
+Print output with no search(just load from the memory) using predefined 2D array objects; print by byte for 1 cycle
 
 -	If (the number of line) = n, (the number of attributes) = t, (the length of each attributes) = m, then print 1 byte for n*t*(m+1) times
 
 <br>
 
-4.	Optimization
+#### Optimization
 
 -	I use more memory for memorization to reduce time complexity, so that not repeatedly read the input file and so on; I try not to use too much memory by using dynamic allocation for optimized amount.
 
@@ -144,50 +141,58 @@ Therefore, I do not sort real objects, but sort the “order number” by compar
 
 
 
-### Input Format <a name="inputF"></a>
+### Input <a name="inputF"></a>
+
+#### Components
+
+1. the number of objects to be sorted
+
+2. the attributes for objects–the key attribute for sorting is marked with “(Key)”
+ 
+3.   the objects to be sorted. Each part is separated from the next part by a character $.
+
+
+    
+#### Format
   
   ```
-  N M t1 t2 ... tm
-  Anm
-      ...
-  Rnm
-      ...
+3
+$
+P_Id ( Key ) : LastName : FirstName : Address : City
+$
+2: Svendson : Tove : Borgvn 23: Sandnes
+3: Pettersen : Kari : Storgt 20: Stavanger
+1: Hansen : Ola : Timoteivn 10: Sandnes
+
   ```
-  
-  - N : process #
-  - M : resource type # 
-  - t : resource unit # for each resource type
-  - Anm : allocation matrix for processes
-  - Rnm : allocation matrix for processes
+
+<br>
+
+### Rules
+
+The sorted objects are in ascending order of the key attribute. 
+
+We note that any item can be the key attribute. 
+
+We also assume that all attribute types are string – attributes should be sorted alphabetically. 
+
+Also, if two objects with equal keys appear in the same order in sorted output as they appear in the input file to be sorted. 
+
+The details are as follows:
+
+– The first part of the input file represents the number of objects to be sorted.
+
+– The second part of the input file represents the attributes for objects; each attribute is separated from the next attribute by a character :.
+
+– The third part of the input file represents the objects to be sorted; each object is separated from the next object by a character :.
+
+
   
 ### Output Format
  
- 1. If No Deadlock
   ```
-<INPUT>
-...
-
-<STACK Trace>
-...
-
----------------------------------------------------------------------------
-
-<RESULT>
-Is there Deadlock? NO
-
-  ```
-
-2. If Deadlock occurs
-```
-<INPUT>
-...
-
-<STACK Trace>
-...
-
----------------------------------------------------------------------------
-
-<RESULT>
-Is there Deadlock? Yes  // Blocked Processes { (pids) }
+1: Hansen : Ola : Timoteivn 10: Sandnes
+2: Svendson : Tove : Borgvn 23: Sandnes
+3: Pettersen : Kari : Storgt 20: Stavanger
 
   ```
