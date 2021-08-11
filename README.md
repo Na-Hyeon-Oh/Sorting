@@ -56,6 +56,8 @@ make
 ./DeadlockDetection input_file_name
 ```
 
+<br>
+
 ### Algorithm
 
 ⚫ I referred to the original Merge sort to have fast performance and stable result in terms of time.
@@ -84,16 +86,18 @@ Therefore, I do not sort real objects, but sort the “order number” by compar
 
 -	I found that functions such as getline() has bigger internal time complexity than fread(), fwrite(). So that I use the latter functions
 
+<br>
+
 2.	Sorting
 
 1)	OrderMergeSort()
 
 -	My sorting algorithm is based on the merge sort, so that it has O(n log n) time complexity and it gives us stable result
--
+
 -	Here, n = obj_num = (the number of objects)
--	
--	OrderMergeSort(key_objects[n], sorted_order[n], low, high, type)
--	
+	
+1)	OrderMergeSort(key_objects[n], sorted_order[n], low, high, type)
+	
   a.	If n=1, done  -> O(1)
   
   b.	Recursively Sort A[1, … n/2(floor)] and A[n/2(ceil), …, n]  -> 2T(n/2)
@@ -114,9 +118,13 @@ Therefore, I do not sort real objects, but sort the “order number” by compar
 
 -	For comparing strings in the key_objects[], I use previously defined function ‘strcmp’ (for case sensitivity) in <string.h>. These functions may impact on code performance with their internal complexity
 
+<br>
+
 3.	Print output with no search(just load from the memory) using predefined 2D array objects; print by byte for 1 cycle
 
 -	If (the number of line) = n, (the number of attributes) = t, (the length of each attributes) = m, then print 1 byte for n*t*(m+1) times
+
+<br>
 
 4.	Optimization
 
@@ -124,6 +132,7 @@ Therefore, I do not sort real objects, but sort the “order number” by compar
 
 -	I try to use predefined functions in library which have less internal time complexity (ex) fread, fwrite, switch…).
 
+<br>
 
 #### EX
 
@@ -131,7 +140,7 @@ Therefore, I do not sort real objects, but sort the “order number” by compar
 
 ⚫ If n ~= 7500000 -> ~=598000ms
 
-
+<br>
 
 
 
